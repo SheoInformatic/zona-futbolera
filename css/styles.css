@@ -1,0 +1,135 @@
+/* Efecto de sombra al pasar el mouse */
+.shadow-hover {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Efecto de escala al pasar el mouse */
+.scale-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.scale-hover:hover {
+  transform: scale(1.03);
+}
+
+/* Efecto de borde colorido */
+.border-hover {
+  transition: all 0.3s ease;
+}
+
+.border-hover:hover {
+  border: 2px solid #007bff !important;
+}
+
+body {
+  background-image: url("https://universidadeuropea.com/resources/media/images/scouting-futbol-800x450.width-640.jpg");
+  background-size: cover;      /* La imagen cubre toda la pantalla */
+  background-repeat: no-repeat; /* No se repite */
+  background-position: center center;  /* Centrada */
+  background-attachment: fixed;
+
+  image-rendering: crisp-edges; /* Estándar */
+  
+  background-color: #2c3e50; /* Color similar a tu imagen */
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    /* Imagen de mayor resolución para pantallas Retina/4K */
+    background-image: url("https://images.unsplash.com/photo-1552667466-07770ae110d0?w=3840&h=2160&fit=crop");
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  body {
+    background-image: url("https://images.unsplash.com/photo-1552667466-07770ae110d0?w=1080&h=1920&fit=crop");
+    background-position: top center;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  body {
+    background-image: url("https://images.unsplash.com/photo-1552667466-07770ae110d0?w=1920&h=1080&fit=crop");
+  }
+}
+
+
+.videos {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: flex-end;
+    justify-content: center;
+}
+
+.card-body {
+     background-color : rgb(255, 252, 245)
+}
+
+
+/* ============================================== */
+/* ESTILOS PARA SUGERENCIAS DE BÚSQUEDA - CORREGIDOS */
+/* ============================================== */
+
+.search-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+#suggestionsContainer {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    color: #333;
+}
+
+.suggestion-item:hover {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+/* Scroll personalizado */
+#suggestionsContainer::-webkit-scrollbar {
+    width: 6px;
+}
+
+#suggestionsContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#suggestionsContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#suggestionsContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
