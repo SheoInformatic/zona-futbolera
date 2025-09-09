@@ -1,0 +1,94 @@
+<!-- navbar.html (NO body, NO head) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Zona futbolera</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="productos.html?cat=camisetas">Camisetas de fútbol</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="productos.html?cat=zapatos">Zapatos de fútbol</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ligas y torneos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="productos.html?liga=liga-chilena">Primera División: Liga Chilena</a></li>
+            <li><a class="dropdown-item" href="productos.html?liga=laliga">LaLiga</a></li>
+            <li><a class="dropdown-item" href="productos.html?liga=premier-league">Premier League</a></li>
+            <li><a class="dropdown-item" href="productos.html?liga=ligue-1">Ligue 1</a></li>
+            <li><a class="dropdown-item" href="productos.html?liga=libertadores">CONMEBOL Libertadores</a></li>
+            <li><a class="dropdown-item" href="productos.html?liga=bundesliga">Bundesliga</a></li>
+            <li><a class="dropdown-item" href="productos.html?liga=champions">UEFA Champions League</a></li>
+            <li><a class="dropdown-item" href="productos.html?liga=mls">Major League Soccer (EE. UU.)</a></li>
+            <li><a class="dropdown-item" href="productos.html?liga=serie-a">Serie A</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="personalizar.html">Personaliza tu camiseta</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <!-- Variante A: abrir modal -->
+          <!-- Antes (abría modal) -->
+<!-- <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</a> -->
+
+        <!-- Ahora (abre la página de login) -->
+        <a class="nav-link" href="login.html">Iniciar sesión</a>
+
+          <!-- Variante B (si prefieres página): <a class="nav-link" href="login.html">Iniciar sesión</a> -->
+        </li>
+      </ul>
+
+      <form class="d-flex" role="search">
+        <!-- Contenedor de búsqueda con posición relativa -->
+        <div class="search-container" style="position: relative;">
+          <input class="form-control me-2"
+                 type="search"
+                 placeholder="🔍 Buscar productos..."
+                 aria-label="Search"
+                 id="searchInput"
+                 autocomplete="off">
+          <div id="suggestionsContainer"
+               style="display:none; position:absolute; top:100%; left:0; width:100%;
+                      background:white; border:1px solid #ddd; border-top:none; z-index:1000;
+                      max-height:200px; overflow-y:auto;">
+          </div>
+
+          <!-- Brand con logo -->
+<a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+</a>
+
+<!-- ... dentro del <ul class="navbar-nav me-auto ..."> deja tus links ... -->
+
+<!-- Carrito + Login (a la derecha) -->
+<ul class="navbar-nav ms-auto align-items-center">
+  <li class="nav-item me-2">
+    <a class="btn btn-outline-secondary position-relative" href="carrito.html" id="btnCarrito" aria-label="Ver carrito">
+      🛒
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="badgeCarrito">0</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Carrito de compra</a>
+  </li>
+</ul>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div id="footer-placeholder"></div>

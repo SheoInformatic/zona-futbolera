@@ -1,0 +1,22 @@
+<script src="js/cart.js" defer></script>
+<script src="js/partials.js" defer></script>
+<body>
+  <!-- Aquí irá el navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <div class="container mt-5">
+    <h1>Página Principal</h1>
+  </div>
+
+  <script>
+    // Cargar navbar.html dentro del div
+    fetch("navbar.html")
+      .then(resp => resp.text())
+      .then(html => {
+        document.getElementById("navbar-placeholder").innerHTML = html;
+      });
+  </script>
+
+  <div id="footer-placeholder"></div>
+
+</body>

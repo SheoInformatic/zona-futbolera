@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrito | Zona futbolera</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- JS globales -->
+  <script src="js/cart.js" defer></script>
+  <script src="js/partials.js" defer></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container py-4">
+    <h1 class="h4 mb-3">Tu carrito</h1>
+
+    <!-- Carrito vacío -->
+    <div id="carritoVacio" class="alert alert-info d-none">
+      Tu carrito está vacío. <a href="productos.html" class="alert-link">Explorar productos</a>.
+    </div>
+
+    <!-- Contenido del carrito -->
+    <div id="carritoContenido" class="d-none">
+      <div class="table-responsive mb-3">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th class="text-nowrap">Precio</th>
+              <th style="width:160px;">Cantidad</th>
+              <th class="text-nowrap">Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyCart"></tbody>
+        </table>
+      </div>
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+        <button id="btnVaciar" class="btn btn-outline-danger">Vaciar carrito</button>
+
+        <div class="card" style="min-width:280px">
+          <div class="card-body">
+            <h2 class="h6">Resumen</h2>
+            <div class="d-flex justify-content-between">
+              <span>Subtotal</span>
+              <strong id="resSubtotal">$0</strong>
+            </div>
+            <div class="d-flex justify-content-between text-muted">
+              <span>Envío</span>
+              <span>Se calcula en checkout</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between fs-5">
+              <span>Total</span>
+              <strong id="resTotal">$0</strong>
+            </div>
+            <button id="btnCheckout" class="btn btn-primary w-100 mt-3">Finalizar compra</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // --- Helpers ---
+    function esc(str){ return String(str).replace(/[&<>"']/g,s=>({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[s])); }
+
+    // Re-render de la tabla y el resumen
+    function renderCart(){
+      const items = (window.zfCart?.items?.() || []);
+      const vacio = document.getElementById('carritoVacio');
+      const cont  = document.getElementById('carritoContenido');
+      const tbody = document.getElementById('tbodyCart');
+
+      if (!items.length){
+        vacio.classList.remove('d-none');
+        cont.classList.add('d-none');
+        document.getElementById('resSubtotal').textContent = window.zfCart?.format?.(0) || '$0';
+        document.getElementById('resTotal').textContent    = window.zfCart?.format?.(0) || '$0';
+        return;
+      }
+
+      vacio.classList.add('d-none');
+      cont.classList.remove('d-none');
+
+      tbody.innerHTML = items.map(it => `
+        <tr data-id="${it.id}">
+          <td>
+            <div class="d-flex align-items-center gap-2">
+              <!-- Si no tienes fotos locales, puedes quitar este <img> -->
+              <img src="assets/img/${it.id}.jpg" alt="" width="48" height="48" class="rounded d-none d-sm-block" onerror="this.style.display='none'">
+              <div>
+                <div class="fw-semibold">${esc(it.name)}</div>
+                <div class="text-muted small">ID: ${it.id}</div>
+              </div>
+            </div>
+          </td>
+          <td>${zfCart.format(it.price)}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Cambiar cantidad">
+              <button class="btn btn-outline-secondary btn-sm btnDec" title="Disminuir">−</button>
+              <span class="px-2">${it.qty}</span>
+              <button class="btn btn-outline-secondary btn-sm btnInc" title="Aumentar">+</button>
+            </div>
+          </td>
+          <td><strong>${zfCart.format(it.price * it.qty)}</strong></td>
+          <td class="text-end">
+            <button class="btn btn-outline-danger btn-sm btnRemove">Eliminar</button>
+          </td>
+        </tr>
+      `).join('');
+
+      const total = window.zfCart.total();
+      document.getElementById('resSubtotal').textContent = window.zfCart.format(total);
+      document.getElementById('resTotal').textContent    = window.zfCart.format(total);
+
+      // Listeners por fila
+      tbody.querySelectorAll('.btnInc').forEach(btn => btn.addEventListener('click', onInc));
+      tbody.querySelectorAll('.btnDec').forEach(btn => btn.addEventListener('click', onDec));
+      tbody.querySelectorAll('.btnRemove').forEach(btn => btn.addEventListener('click', onRemove));
+    }
+
+    // --- Acciones ---
+    function onInc(e){
+      const tr = e.target.closest('tr'); const id = Number(tr.dataset.id);
+      const it = zfCart.items().find(x => Number(x.id) === id);
+      if (!it) return;
+      zfCart.add(it.id, it.name, it.price, 1); // suma 1
+      renderCart();
+    }
+
+    function onDec(e){
+      const tr = e.target.closest('tr'); const id = Number(tr.dataset.id);
+      const it = zfCart.items().find(x => Number(x.id) === id);
+      if (!it) return;
+      if (it.qty <= 1) {
+        zfCart.remove(it.id);                 // si queda en 0, eliminar
+      } else {
+        // Como no tenemos "setQty", reconstruimos el item con qty - 1
+        zfCart.remove(it.id);
+        zfCart.add(it.id, it.name, it.price, it.qty - 1);
+      }
+      renderCart();
+    }
+
+    function onRemove(e){
+      const tr = e.target.closest('tr'); const id = Number(tr.dataset.id);
+      zfCart.remove(id);
+      renderCart();
+    }
+
+    // Botones globales
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('btnVaciar').addEventListener('click', () => {
+        if (confirm('¿Vaciar todo el carrito?')) { zfCart.clear(); renderCart(); }
+      });
+      document.getElementById('btnCheckout').addEventListener('click', () => {
+        alert('Demo: aquí iría el flujo de pago / checkout.');
+      });
+
+      renderCart();
+    });
+
+    // Re-render si el carrito cambia desde otra página
+    document.addEventListener('cart:updated', renderCart);
+  </script>
+</body>
+</html>

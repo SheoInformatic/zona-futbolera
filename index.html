@@ -1,285 +1,301 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Zona futbolera</title>
-    <!--CSS de Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!--JS de Bootstrap (para funcionalidad como el menú responsive)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <!--Enlazar css-->
-    <link rel="stylesheet" href="css/styles.css">
-    <!--Enlazar js-->
-    <script src="js/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zona futbolera</title>
+
+  <!-- Bootstrap CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Tu JS (difiere ejecución hasta parsear el DOM) -->
+  <script src="js/script.js" defer></script>
+
+  <!-- en <head> o al final del <body> -->
+  <script src="js/cart.js" defer></script>
+  <script src="js/partials.js" defer></script>
+
 </head>
 
-<!--NAV-->
 <body>
-   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+  <!-- NAVBAR (se inyecta) -->
+  <div id="navbar-placeholder"></div>
 
-    <a class="navbar-brand" href="#">Zona futbolera</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Camisetas de futbol</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Zapatos de futbol</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Ligas de futbol y torneos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Primera División: Liga Chilena</a></li>
-            <li><a class="dropdown-item" href="#">LALIGA</a></li>
-            <li><a class="dropdown-item" href="#">Premier legue</a></li>
-            <li><a class="dropdown-item" href="#">Ligue 1</a></li>
-            <li><a class="dropdown-item" href="#">CONMEBOL Libertadores</a></li>
-            <li><a class="dropdown-item" href="#">Bundesliga</a></li>
-            <li><a class="dropdown-item" href="#">UEFA Champions League</a></li>
-            <li><a class="dropdown-item" href="#">Major League Soccer de EE.UU.</a></li>
-            <li><a class="dropdown-item" href="#">Seria A</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Personaliza tu camiseta</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Iniciar sesion</a>
-        </li>
-      </ul>
-        <form class="d-flex" role="search">
-      <!-- CONTENEDOR DE BÚSQUEDA CON POSITION RELATIVE -->
-      <div class="search-container" style="position: relative;">
-        <input class="form-control me-2" 
-               type="search" 
-               placeholder="🔍 Buscar productos..." 
-               aria-label="Search" 
-               id="searchInput" 
-               autocomplete="off">
-      <div id="suggestionsContainer" 
-             style="display: none; 
-                    position: absolute; 
-                    top: 100%; 
-                    left: 0; 
-                    width: 100%; 
-                    background: white; 
-                    border: 1px solid #ddd; 
-                    border-top: none; 
-                    z-index: 1000; 
-                    max-height: 200px; 
-                    overflow-y: auto;">
-        </div>
-      </div>    
-      </form>
-    </div>
-  </div>
-  </nav>
-    <!--FIN DEL NAV-->
-
-
-<div class="container mt-4">
-  <div class="row">
-  <!--iMAGEN 1-->
-      <div class="col-md-6 col-lg-4 mb-4"> <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)
-                                              col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-        <div class="card h-100 shadow-hover scale-hover">
-          <img src="https://acdn-us.mitiendanube.com/stores/001/312/744/products/whatsapp_image_2024-07-10_at_11-34-31_am-removebg-preview-987ffee58cbd12e49c17206371711424-480-0.png" class="card-img-top" alt="Shirt sport CR7 UNITED">
-          <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title">Football shirt with arms Man United 7</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from the England club (Man United).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-          </div>
-      </div>
-    </div>
-  
-
-
-<!--iMAGEN 2-->
- 
-      
-    <div class="col-md-6 col-lg-4 mb-4">  <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)
-                                          col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-      <div class="card h-100 shadow-hover scale-hover">
-          <img src="https://sportsmuseum.cl/wp-content/uploads/2023/03/773bfe807dea.jpg" class="card-img-top" alt="Shirt sport Alexis man united">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">Football shirt Alexis sanchez Man united</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from the England club (Man United).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-            </div>
-      </div>
-    </div>
-
-
-  <!--iMAGEN 3-->
-    <div class="col-md-6 col-lg-4 mb-4">  <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)
-                                          col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-      <div class="card h-100 shadow-hover scale-hover">
-          <img src="https://static1.cdn-subsidesports.com/2/media/catalog/product/cache/38d4094f49a5c2931b615f53f1250097/0/6/0699a7fe35a188f03ea45d48afd8a25ab973eb2ca7df946992c3f1710a0092a7.jpeg" class="card-img-top" alt="Shirt sport CR7 PORTUGAL">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">Football shirt Ronaldo 7</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from the England club (Man United).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-            </div>
-      </div>
-    </div>
-
-
-  <!--iMAGEN 4-->
-    <div class="col-md-6 col-lg-4 mb-4">  <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)soccer jersey
-                                          col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-      <div class="card h-100 shadow-hover scale-hover">
-          <img src=https://acdn-us.mitiendanube.com/stores/003/636/118/products/camisa-jersey-shirt-retro-psg-away-2022-2023-jordan-cinza-neymar-jr-11-350d300c417fc95afa17387347444324-1024-1024.png class="card-img-top" alt="Shirt sport Neymar PSG">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">Football shirt Neymar PSG</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from the France club (PSG).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-            </div>
-      </div>
-    </div>
-
-  <!--iMAGEN 5-->
-  <div class="col-md-6 col-lg-4 mb-4">  <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)
-                                          col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-      <div class="card h-100 shadow-hover scale-hover">
-          <img src="https://fanatics.frgimages.com/paris-saint-germain/mens-jordan-brand-kylian-mbapp%C3%A9-blue-paris-saint-germain-2021/22-home-breathe-stadium-replica-player-jersey_pi4309000_altimages_ff_4309680-a19715925e5e11baec00alt1_full.jpg?_hv=2&w=900" class="card-img-top" alt="Shirt sport Mbappe PSG">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">Football shirt MBAPPE PSG</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from the France club (PSG).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-            </div>
-      </div>
-    </div>
-
-    <!--iMAGEN 6-->
-  <div class="col-md-6 col-lg-4 mb-4">  <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)
-                                          col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-      <div class="card h-100 shadow-hover scale-hover">
-          <img src="https://cdn.pacifiko.com/image/cache/catalog/p/NzY5YzhlOD_2-1000x1000.jpg" class="card-img-top" alt="Shirt sport MESSI PSG">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">Football shirt Messi PSG</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from the France club (PSG).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-            </div>
-      </div>
-    </div>
-  
-    <!--iMAGEN 7-->
-  <div class="col-md-6 col-lg-4 mb-4">  <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)
-                                          col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-      <div class="card h-100 shadow-hover scale-hover">
-          <img src=https://foot-star.com/wp-content/uploads/2024/08/Maillot-Chelsea-Domicile-2024-2025-Sterling.jpg class="card-img-top" alt="Shirt sport sterling chelsea">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">Football shirt Sterling Chelsea</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from England club (chelsea).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-            </div>
-      </div>
-    </div>
-  
-    <!--iMAGEN 8-->
-  <div class="col-md-6 col-lg-4 mb-4">  <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)
-                                          col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-      <div class="card h-100 shadow-hover scale-hover">
-          <img src="https://images.footballfanatics.com/chelsea/youth-nike-kai-havertz-blue-chelsea-2020/21-home-player-replica-jersey_pi4111000_altimages_ff_4111454-dcc07e8c1e53e3e91e01alt1_full.jpg?_hv=2&w=600" class="card-img-top" alt="Shirt sport Haverts chelsea">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">Football shirt Havertz chelsea</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from England club (chelsea).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-            </div>
-      </div>
-    </div>
-
- 
-
-    <!--iMAGEN 6-->
-  <div class="col-md-6 col-lg-4 mb-4">  <!--col-md-4 = 4 columnas de 12 → 4 + 4 + 4 = 12 (3 cards por fila)
-                                          col-sm-6 = 6 columnas de 12 → 6 + 6 = 12 (2 cards por fila en móviles)-->
-      <div class="card h-100 shadow-hover scale-hover">
-          <img src=https://static1.cdn-subsidesports.com/2/media/catalog/product/cache/38d4094f49a5c2931b615f53f1250097/2/3/23c8c9ffd78297be5e6f4f05bd93df260c304de2e2232f102d605f862e9f776c.jpeg alt="Shirt sport Palmer chelsea">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">Football shirt Palmer chelsea</h5>
-              <p class="card-text flex-grow-1">Articule exclusive from England club (chelsea).</p>
-            <a href="#" class="btn btn-primary mt-auto">Go to buy</a>
-            </div>
-      </div>
-    </div>
-  </div>  <!--CIERRE ROW-->
-</div> <!--CIERRE CONTAINER-->
-
-
-<!--VIDEOS-->
-<div class="videos">
-  <div class="css/style.css/video-nike">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/_2zoIHTWd00?si=ZKk1AAlxyF8HeBzM" title="YouTube video nike" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-      </div>
-
-    
-<!--Fin VIDEOS-->
-</div>
-
-<!-- FORMULARIO DE CONTACTO -->
-<section class="container my-5">
-  <div class="row justify-content-center">
+<section class="container mt-4">
+  <div class="row align-items-center g-4 bg-dark text-light rounded-4 p-4 p-lg-5">
     <div class="col-md-6">
-      <h2 class="text-center mb-4">Contactános</h2>
-      <form id="contactForm">
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre completo</label>
-          <input type="text" class="form-control" id="nombre" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" required>
-        </div>
-        <div class="mb-3">
-          <label for="mensaje" class="form-label">Mensaje</label>
-          <textarea class="form-control" id="mensaje" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-      </form>
+      <h1 class="display-6 fw-bold">Tu tienda de camisetas y botines</h1>
+      <p class="lead mb-3">Descubre productos oficiales y retro de tus ligas y clubes favoritos.</p>
+      <a href="productos.html" class="btn btn-primary btn-lg">Ver catálogo</a>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSq9wSYv26vntr4XYS0EhEQcX4Cvt4wOUaOw&s" alt="Zona Futbolera" class="img-fluid rounded shadow">
     </div>
   </div>
 </section>
 
 
 
-<!-- FOOTER -->
-<footer class="bg-dark text-white py-4 mt-5">
-  <div class="container">
+  <div class="container mt-4">
     <div class="row">
-      <div class="col-md-4">
-        <h5>Zona futbolera</h5>
-        <p>Tu tienda de ropa deportiva favorita</p>
+
+      <!-- CARD 1 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://acdn-us.mitiendanube.com/stores/001/312/744/products/whatsapp_image_2024-07-10_at_11-34-31_am-removebg-preview-987ffee58cbd12e49c17206371711424-480-0.png" class="card-img-top" alt="Shirt sport CR7 UNITED">
+          <div class="card-body d-flex flex-column justify-content-between">
+          <h5 class="card-title">Football shirt with arms Man United 7</h5>
+          <p class="mb-1 fw-bold text-primary">$24.990</p> <!-- 👈 PRECIO visible -->
+          <p class="card-text flex-grow-1">Artículo exclusivo del club inglés (Man United).</p>
+
+          <!-- Botón agrega al carrito -->
+          <button class="btn btn-primary mt-auto"
+                  data-id="1" data-name="Man United 7 - cristiano" data-price="24990"
+                  onclick="agregarAlCarrito(this)">
+            Agregar al carrito 🛒
+            </button>
+          </div>
+
+          </div>
+        </div>
+      
+
+      <!-- CARD 2 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://sportsmuseum.cl/wp-content/uploads/2023/03/773bfe807dea.jpg" class="card-img-top" alt="Shirt sport Alexis man united">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Football shirt Alexis sanchez Man united</h5>
+            <p class="mb-1 fw-bold text-primary">$24.990</p> 
+            <p class="card-text flex-grow-1">Articule exclusive from the England club (Man United).</p>
+            
+            <!-- Botón agrega al carrito -->
+            <button class="btn btn-primary mt-auto"
+                    data-id="2" data-name="Man United 7 - Alexis" data-price="24990"
+                    onclick="agregarAlCarrito(this)">
+              Agregar al carrito 🛒
+            </button>
+          </div>
+          </div>
+        </div>
+      
+
+      <!-- CARD 3 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://static1.cdn-subsidesports.com/2/media/catalog/product/cache/38d4094f49a5c2931b615f53f1250097/0/6/0699a7fe35a188f03ea45d48afd8a25ab973eb2ca7df946992c3f1710a0092a7.jpeg" class="card-img-top" alt="Shirt sport CR7 PORTUGAL">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Football shirt Ronaldo 7</h5>
+            <p class="mb-1 fw-bold text-primary">$24.990</p> 
+            <p class="card-text flex-grow-1">Articule exclusive from the England club (Man United).</p>
+            
+            <button class="btn btn-primary mt-auto"
+          data-id="3" data-name="Man United 17 - Garnacho" data-price="24990"
+          onclick="agregarAlCarrito(this)">
+     Agregar al carrito 🛒
+  </button>
+          </div>
+          </div>
+        </div>
+      
+
+      <!-- CARD 4 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://acdn-us.mitiendanube.com/stores/003/636/118/products/camisa-jersey-shirt-retro-psg-away-2022-2023-jordan-cinza-neymar-jr-11-350d300c417fc95afa17387347444324-1024-1024.png" class="card-img-top" alt="Shirt sport Neymar PSG">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Football shirt Neymar PSG</h5>
+            <p class="mb-1 fw-bold text-primary">$24.990</p>
+            <p class="card-text flex-grow-1">Articule exclusive from the France club (PSG).</p>
+            <button class="btn btn-primary mt-auto"
+          data-id="4" data-name="PSG - NEYMAR" data-price="24990"
+          onclick="agregarAlCarrito(this)">
+           Agregar al carrito 🛒
+          </button>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <h5>Enlaces rápidos</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-white">Inicio</a></li>
-          <li><a href="#" class="text-white">Productos</a></li>
-          <li><a href="#" class="text-white">Contacto</a></li>
-        </ul>
+
+      <!-- CARD 5 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://fanatics.frgimages.com/paris-saint-germain/mens-jordan-brand-kylian-mbapp%C3%A9-blue-paris-saint-germain-2021/22-home-breathe-stadium-replica-player-jersey_pi4309000_altimages_ff_4309680-a19715925e5e11baec00alt1_full.jpg?_hv=2&w=900" class="card-img-top" alt="Shirt sport Mbappe PSG">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Football shirt MBAPPE PSG</h5>
+            <p class="mb-1 fw-bold text-primary">$24.990</p>
+            <p class="card-text flex-grow-1">Articule exclusive from the France club (PSG).</p>
+            <button class="btn btn-primary mt-auto"
+          data-id="5" data-name="PSG - MBAPPE" data-price="24990"
+          onclick="agregarAlCarrito(this)">
+          Agregar al carrito 🛒
+          </button>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <h5>Contacto</h5>
-        <p>Email: info@zonafutbolera.com</p>
-        <p>Teléfono: +5692134589</p>
+
+      <!-- CARD 6 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://cdn.pacifiko.com/image/cache/catalog/p/NzY5YzhlOD_2-1000x1000.jpg" class="card-img-top" alt="Shirt sport MESSI PSG">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Football shirt Messi PSG</h5>
+            <p class="mb-1 fw-bold text-primary">$24.990</p>
+            <p class="card-text flex-grow-1">Articule exclusive from the France club (PSG).</p>
+            <button class="btn btn-primary mt-auto"
+          data-id="6" data-name="PSG - MESSI" data-price="24990"
+          onclick="agregarAlCarrito(this)">
+           Agregar al carrito 🛒
+          </button>
+          </div>
+          </div>
+        </div>
+      
+
+      <!-- CARD 7 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://foot-star.com/wp-content/uploads/2024/08/Maillot-Chelsea-Domicile-2024-2025-Sterling.jpg" class="card-img-top" alt="Shirt sport Sterling Chelsea">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Football shirt Sterling Chelsea</h5>
+            <p class="mb-1 fw-bold text-primary">$24.990</p>
+            <p class="card-text flex-grow-1">Articule exclusive from England club (Chelsea).</p>
+            <button class="btn btn-primary mt-auto"
+          data-id="7" data-name="CHELSEA - STERLING" data-price="24990"
+          onclick="agregarAlCarrito(this)">
+           Agregar al carrito 🛒
+          </button>
+          </div>
+          </div>
+        </div>
+      
+
+      <!-- CARD 8 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://images.footballfanatics.com/chelsea/youth-nike-kai-havertz-blue-chelsea-2020/21-home-player-replica-jersey_pi4111000_altimages_ff_4111454-dcc07e8c1e53e3e91e01alt1_full.jpg?_hv=2&w=600" class="card-img-top" alt="Shirt sport Havertz Chelsea">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Football shirt Havertz Chelsea</h5>
+            <p class="mb-1 fw-bold text-primary">$24.990</p>
+            <p class="card-text flex-grow-1">Articule exclusive from England club (Chelsea).</p>
+            <button class="btn btn-primary mt-auto"
+          data-id="8" data-name="CHELSEA - HAVERTZ" data-price="24990"
+          onclick="agregarAlCarrito(this)">
+          Agregar al carrito 🛒
+          </button>
+          </div>
+          </div>
+        </div>
+
+      <!-- CARD 9 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-hover scale-hover">
+          <img src="https://static1.cdn-subsidesports.com/2/media/catalog/product/cache/38d4094f49a5c2931b615f53f1250097/2/3/23c8c9ffd78297be5e6f4f05bd93df260c304de2e2232f102d605f862e9f776c.jpeg" class="card-img-top" alt="Shirt sport Palmer Chelsea">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Football shirt Palmer Chelsea</h5>
+            <p class="mb-1 fw-bold text-primary">$24.990</p>
+            <p class="card-text flex-grow-1">Articule exclusive from England club (Chelsea).</p>
+            <button class="btn btn-primary mt-auto"
+          data-id="9" data-name="CHELSEA - PALMER" data-price="24990"
+          onclick="agregarAlCarrito(this)">
+           Agregar al carrito 🛒
+          </button>
+          </div>
+          </div>
+        </div>
+
+  <!-- VIDEO -->
+  <div class="video-nike">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/_2zoIHTWd00?si=ZKk1AAlxyF8HeBzM" title="YouTube video nike" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <!-- CONTACTO -->
+  <section class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Contáctanos</h2>
+        <form id="contactForm">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input type="text" class="form-control" id="nombre" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+        </form>
       </div>
     </div>
-    <div class="text-center mt-3">
-      <p>&copy; 2025 Zona futbolera. Todos los derechos reservados.</p>
+  </section>
+
+  <!-- MODAL LOGIN -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title">Inicia sesión</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="authForm-m" class="mb-3">
+            <div class="mb-3">
+              <label class="form-label">Correo</label>
+              <input id="email-m" type="email" class="form-control" placeholder="ejemplo@correo.com" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Contraseña</label>
+              <input id="password-m" type="password" class="form-control" placeholder="Mínimo 6 caracteres" minlength="6" required />
+            </div>
+            <div class="d-flex gap-2 mb-3">
+              <button type="button" id="btnSignIn-m" class="btn btn-primary flex-fill">Entrar</button>
+              <button type="button" id="btnSignUp-m" class="btn btn-outline-light flex-fill">Crear cuenta</button>
+            </div>
+            <button type="button" id="btnGoogle-m" class="btn btn-light w-100">Continuar con Google</button>
+          </form>
+
+          <div id="status-m" class="text-center small mb-3"></div>
+
+          <div id="protected-m" class="border-top pt-3 d-none">
+            <p class="mb-2">Sesión activa como <span id="userEmail-m" class="badge bg-secondary"></span></p>
+            <button id="btnSignOut-m" class="btn btn-outline-danger btn-sm">Cerrar sesión</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
 
+  <!-- FOOTER (se inyecta) -->
+  <div id="footer-placeholder"></div>
 
+  <!-- Carga parciales: navbar + footer -->
+  <script>
+    function loadPartial(placeholderId, url, readyEvent) {
+      const el = document.getElementById(placeholderId);
+      if (!el) { console.error('No existe #' + placeholderId); return; }
+      fetch(url)
+        .then(r => { if (!r.ok) throw new Error(r.status + ' ' + r.statusText); return r.text(); })
+        .then(html => { el.innerHTML = html; if (readyEvent) document.dispatchEvent(new Event(readyEvent)); })
+        .catch(err => console.error('Error cargando ' + url + ':', err));
+    }
 
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPartial('navbar-placeholder', 'navbar.html', 'navbar:ready');
+      loadPartial('footer-placeholder', 'footer.html', 'footer:ready');
+    });
 
+    // actualizar año del footer
+    document.addEventListener('footer:ready', () => {
+      const y = document.getElementById('zf-year');
+      if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>
 </body>
-
 </html>
